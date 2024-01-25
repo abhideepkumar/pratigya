@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -12,19 +11,17 @@ export default function Profile() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="max-w-sm w-full p-4 bg-white shadow-md rounded-lg">
-        <div className="relative h-32">
-          <Image
+        <div className="relative">
+          <img
             src="/img/landscape.jpg"
-            alt="img"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg mix-blend-multiply"
-            width={0}
-            height={0}
+            alt="img" 
+            className="rounded-lg mix-blend-multiply h-40 w-full object-cover"
+            width={100}
+            height={100}
           />
           <div className="absolute bottom-0 left-0 aspect-square">
             <div className="">
-              <Image
+              <img
                 src="/img/square.jpg"
                 alt="Profile"
                 width={100}
@@ -85,13 +82,13 @@ export default function Profile() {
           </p>
           <div className="flex items-center mt-2 bg-gray-200 p-2 rounded-md max-w-sm">
             <div className="h-8 w-8 border border-gray-300 rounded-full overflow-hidden mr-2">
-              <Image src="/img/square.jpg" alt="Abhideep Kumar" width={100} height={100} />
+              <img src="/img/square.jpg" alt="Abhideep Kumar" width={100} height={100} />
             </div>
             <p className="text-sm text-gray-700 font-bold">Abhideep Kumar</p>
           </div>
           <div className="flex items-center mt-2 bg-gray-200 p-2 rounded-md max-w-sm">
             <div className="h-8 w-8 border border-gray-300 rounded-full overflow-hidden mr-2">
-              <Image src="/img/square.jpg" alt="Rohan MS" width={100} height={100} />
+              <img src="/img/square.jpg" alt="Rohan MS" width={100} height={100} />
             </div>
             <p className="text-sm text-gray-700 font-bold">Rohan</p>
           </div>

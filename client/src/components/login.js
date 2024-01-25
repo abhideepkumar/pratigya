@@ -1,5 +1,3 @@
-"use client";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
@@ -12,7 +10,7 @@ export default function Login() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="max-w-sm w-full p-4 bg-white shadow-md rounded-lg">
         <div className="flex items-center justify-center">
-          <Image src="/img/logo2.jpg" alt="PRATIGYA" width={250} height={250} />
+          <img src="/img/logo2.jpg" alt="PRATIGYA" width={250} height={250} />
           {/* <h1 className="text-2xl font-bold text-gray-800">PRATIGYA</h1>
           <p className="text-sm text-gray-500">Empowering Women</p> */}
         </div>
