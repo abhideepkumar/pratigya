@@ -1,10 +1,8 @@
-import React from 'react';
 import './App.css';
+import Community from './components/community';
 import Login from './components/login';
 import Profile from './components/profile';
-import HomePage from './components/HomePage';  // Import the HomePage component
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 
 function App() {
   return (
@@ -12,9 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login/>} />
         <Route path="/profile" element={<Profile/>} />
-        <Route path="/HomePage" element={<HomePage/>} />
-        <Route path="/Community" element={<Community/>} />
-        
+        <Route path="/community" element={<Community/>} />
       </Routes>
     </BrowserRouter>
   );
