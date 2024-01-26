@@ -1,11 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEnvelope,
-  faLock,
-  faPhone,
-  faLocationDot,
-  faPen,
-} from "@fortawesome/free-solid-svg-icons";
+import {faEnvelope, faLock, faPhone, faLocationDot, faPen,} from "@fortawesome/free-solid-svg-icons";
 
 export default function Profile() {
   return (
