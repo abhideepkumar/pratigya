@@ -4,7 +4,7 @@ import { faGoogle, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 export default function Login() {
   const onSubmit = (event) => {
     event.preventDefault();
-    window.location.href = "/home";
+    window.location.href = "/profile";
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
