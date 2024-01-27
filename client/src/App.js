@@ -1,7 +1,7 @@
 import './App.css';
 import Login from './components/login';
 import Profile from './components/profile';
-import HomePage from './components/HomePage';  // Import the HomePage component
+import HomePage from './components/HomePage';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login/>} />
         <Route path="/profile" element={<Profile/>} />
+        <Route path="/HomePage" element={<HomePage/>}/>
       </Routes>
     </BrowserRouter>
   );

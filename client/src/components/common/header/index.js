@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./header.css";
 
 const HeaderComponent = () => {
@@ -33,12 +34,14 @@ const HeaderComponent = () => {
           </div>
         </div>
         <div className="profile-wrapper">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ58jICYPTsvxgprSe3OgY4DkqNPp6F2v82ZA&usqp=CAU"
-            alt="Profile"
-            className="header-profile-image"
-          />
-          <span className="header-username">Aryan</span>
+          <Link to="/profile.js"> {/* Link to the profile page */}
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ58jICYPTsvxgprSe3OgY4DkqNPp6F2v82ZA&usqp=CAU"
+              alt="Profile"
+              className="header-profile-image"
+            />
+          </Link>
+          <span className="header-username">Hey Aryan</span>
           <i className="fi fi-rr-angle-small-sown absolute-center profile-option-icon"></i>
         </div>
       </div>
