@@ -64,7 +64,7 @@
     180deg,
     rgba(14, 14, 82, 0.83),
     rgba(68, 157, 209, 0.65) 55.37%,
-    rgba(217, 217, 217, 0)
+    rgba(217, 217, 217, 0)  
   );
   backdrop-filter: blur(4px);
   display: flex;
@@ -76,6 +76,7 @@
   font-size: var(--font-size-base);
   color: var(--color-black);
   font-family: var(--font-inter);
+  margin: 10px;
 }
 .map-frame-child {
   width: 334px;
@@ -124,6 +125,7 @@
   border-radius: var(--br-9xs);
   background-color: var(--color-darkblue);
   display: none;
+  margin: auto;
 }
 .about-us {
   position: relative;
@@ -145,6 +147,7 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
+  margin: auto;
 }
 .map-frame-inner {
   align-self: stretch;
@@ -179,6 +182,7 @@
   font-size: var(--font-size-base);
   color: #f6f6f6;
   font-family: var(--font-poppins);
+  
 }
 .span {
   color: var(--color-black);

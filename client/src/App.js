@@ -1,20 +1,16 @@
-<<<<<<< HEAD
 import { useEffect } from "react";
 import {
   Routes,
   Route,
   useNavigationType,
+  BrowserRouter,
   useLocation,
 } from "react-router-dom";
-import Home from "./pages/Home";
-=======
-import './App.css';
 import Login from './components/login';
-import Community from './components/community';
-import Profile from './components/profile';
-import HomePage from './components/HomePage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
->>>>>>> 8c58ceb9b2ab0b964ca16d6c434a8cc6f69b6de9
+import Home from "./pages/Home";
+import Profile from "./components/profile";
+import Community from "./components/community";
+import './App.css';
 
 function App() {
   const action = useNavigationType();
@@ -53,20 +49,13 @@ function App() {
   }, [pathname]);
 
   return (
-<<<<<<< HEAD
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/Login" element={<Login/>}/>
+      <Route path="/Profile" element={<Profile/>}/>
+      <Route path="/Community" element={<Community/>}/>
+
     </Routes>
-=======
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login/>} />
-        <Route path="/profile" element={<Profile/>} />
-        <Route path="/community" element={<Community/>} />
-        <Route path="/dashboard" element={<HomePage/>}/>
-      </Routes>
-    </BrowserRouter>
->>>>>>> 8c58ceb9b2ab0b964ca16d6c434a8cc6f69b6de9
   );
 }
 export default App;
