@@ -1,7 +1,13 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("uid")) return navigate("/login");
+    if (localStorage.getItem("status") !== "verified") return navigate("/profile-edit");
+  });
   const onMdibellIconClick = useCallback(() => {
     // Please sync "Notifications" to the project
   }, []);
@@ -93,9 +99,7 @@ const Home = () => {
               src="/unsplashu5e1kqw6e3m@2x.png"
             />
             <div className="empowering-women-to-container">
-              <p className="empowering-women-to">
-                “Empowering WOMEN to live their lives
-              </p>
+              <p className="empowering-women-to">“Empowering WOMEN to live their lives</p>
               <p className="without-fear">without fear.”</p>
             </div>
             <div className="map-frame-inner">
@@ -122,12 +126,7 @@ const Home = () => {
                   <img className="image-3-icon" alt="" src="/image-3@2x.png" />
                 </div>
                 <div className="text-parent">
-                  <img
-                    className="mdilocation-icon"
-                    loading="eager"
-                    alt=""
-                    src="/mdilocation.svg"
-                  />
+                  <img className="mdilocation-icon" loading="eager" alt="" src="/mdilocation.svg" />
                   <div className="location">Location :</div>
                   <div className="canteen">Canteen</div>
                 </div>
@@ -137,11 +136,7 @@ const Home = () => {
                 <button className="group-button" onClick={onGroupButton1Click}>
                   <div className="rectangle-div" />
                   <div className="view-details">View Details</div>
-                  <img
-                    className="pharrow-right-bold-icon"
-                    alt=""
-                    src="/pharrowrightbold.svg"
-                  />
+                  <img className="pharrow-right-bold-icon" alt="" src="/pharrowrightbold.svg" />
                 </button>
                 <div className="group-div">
                   <div className="frame-child1" />
@@ -182,17 +177,10 @@ const Home = () => {
                 <div className="fluent-list-fill">
                   <div className="bipeoplefill">02/04/2023</div>
                 </div>
-                <button
-                  className="rectangle-parent1"
-                  onClick={onGroupButton2Click}
-                >
+                <button className="rectangle-parent1" onClick={onGroupButton2Click}>
                   <div className="frame-child3" />
                   <div className="view-details1">View Details</div>
-                  <img
-                    className="pharrow-right-bold-icon1"
-                    alt=""
-                    src="/pharrowrightbold.svg"
-                  />
+                  <img className="pharrow-right-bold-icon1" alt="" src="/pharrowrightbold.svg" />
                 </button>
                 <div className="group-content">
                   <div className="upvote-container" />
@@ -231,10 +219,7 @@ const Home = () => {
                 <div className="container">
                   <div className="div1">12/07/2022</div>
                 </div>
-                <div
-                  className="rectangle-parent2"
-                  onClick={onGroupContainerClick}
-                >
+                <div className="rectangle-parent2" onClick={onGroupContainerClick}>
                   <div className="frame-child4" />
                   <div className="view-details2">View Details</div>
                   <img
@@ -283,17 +268,10 @@ const Home = () => {
                 <div className="frame-group">
                   <div className="frame-empty">12/07/2022</div>
                 </div>
-                <div
-                  className="rectangle-parent3"
-                  onClick={onGroupContainer2Click}
-                >
+                <div className="rectangle-parent3" onClick={onGroupContainer2Click}>
                   <div className="frame-child5" />
                   <div className="view-details3">View Details</div>
-                  <img
-                    className="pharrow-right-bold-icon3"
-                    alt=""
-                    src="/pharrowrightbold.svg"
-                  />
+                  <img className="pharrow-right-bold-icon3" alt="" src="/pharrowrightbold.svg" />
                 </div>
                 <div className="frame-frame">
                   <div className="ellipse-upvote" />
@@ -346,17 +324,10 @@ const Home = () => {
                 <div className="frame">
                   <div className="div3">12/07/2022</div>
                 </div>
-                <button
-                  className="rectangle-parent5"
-                  onClick={onGroupButton3Click}
-                >
+                <button className="rectangle-parent5" onClick={onGroupButton3Click}>
                   <div className="frame-child7" />
                   <div className="view-details4">View Details</div>
-                  <img
-                    className="pharrow-right-bold-icon4"
-                    alt=""
-                    src="/pharrowrightbold.svg"
-                  />
+                  <img className="pharrow-right-bold-icon4" alt="" src="/pharrowrightbold.svg" />
                 </button>
                 <div className="rectangle-parent6">
                   <div className="frame-child8" />
@@ -398,11 +369,7 @@ const Home = () => {
                 <button className="rectangle-parent9">
                   <div className="frame-child10" />
                   <div className="view-details5">View Details</div>
-                  <img
-                    className="pharrow-right-bold-icon5"
-                    alt=""
-                    src="/pharrowrightbold.svg"
-                  />
+                  <img className="pharrow-right-bold-icon5" alt="" src="/pharrowrightbold.svg" />
                 </button>
                 <div className="rectangle-parent10">
                   <div className="frame-child11" />
@@ -441,10 +408,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="div7">12/07/2022</div>
-                <div
-                  className="rectangle-parent13"
-                  onClick={onGroupContainer3Click}
-                >
+                <div className="rectangle-parent13" onClick={onGroupContainer3Click}>
                   <div className="frame-child13" />
                   <div className="view-details6">View Details</div>
                   <img
@@ -491,10 +455,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="div9">12/07/2022</div>
-                <div
-                  className="rectangle-parent17"
-                  onClick={onGroupContainer4Click}
-                >
+                <div className="rectangle-parent17" onClick={onGroupContainer4Click}>
                   <div className="frame-child16" />
                   <div className="view-details7">View Details</div>
                   <img
@@ -527,12 +488,7 @@ const Home = () => {
       <div className="about-us-group-parent">
         <div className="about-us-group1" />
         <div className="streamline-group">
-          <img
-            className="streamline-group-child"
-            loading="eager"
-            alt=""
-            src="/group-7.svg"
-          />
+          <img className="streamline-group-child" loading="eager" alt="" src="/group-7.svg" />
           <img
             className="fluentlist-16-filled-icon"
             loading="eager"

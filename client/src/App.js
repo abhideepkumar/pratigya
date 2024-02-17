@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Profile from "./components/profile";
 import Community from "./components/community";
 import './App.css'; 
+import ProfileEditCreate from "./components/profile-edit";
 
 function App() {
   const action = useNavigationType();
@@ -32,6 +33,7 @@ function App() {
         title = "";
         metaDescription = "";
         break;
+        default:console.log("Switch block error")
     }
 
     if (title) {
@@ -53,6 +55,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/Login" element={<Login/>}/>
       <Route path="/Profile" element={<Profile/>}/>
+      <Route path="/profile-edit" element={<ProfileEditCreate/>}/>
       <Route path="/Community" element={<Community/>}/>
 
     </Routes>
