@@ -521,16 +521,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div
-              className="frame-message-parent"
-              onClick={onGroupContainer42Click}
-            >
-              <div className="frame-message">
-                <div className="ellipse-ellipse" />
-                <div className="frame-empowering" />
-              </div>
-              <h2 className="sos">SOS</h2>
-            </div>
           </div>
         </section>
       </main>

@@ -10,7 +10,7 @@ import Login from './components/login';
 import Home from "./pages/Home";
 import Profile from "./components/profile";
 import Community from "./components/community";
-import './App.css';
+import './App.css'; 
 
 function App() {
   const action = useNavigationType();
