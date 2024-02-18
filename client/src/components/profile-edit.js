@@ -1,18 +1,37 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEnvelope,
-  faPhone,
-  faLocationDot,
-} from "@fortawesome/free-solid-svg-icons";
-
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { faEnvelope, faPhone, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 export default function ProfileEdit() {
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [phone, setPhone] = useState("");
+  const [name, setName] = useState(localStorage.getItem("name"));
+  const [location, setLocation] = useState(localStorage.getItem("location"));
+  const [phone, setPhone] = useState(localStorage.getItem("phone"));
 
-  const handleSave = () => {
-    // Implement save logic here
+  const navigate = useNavigate();
+
+  const handleSave = async () => {
+    const db = getFirestore();
+    const docRef = await setDoc(doc(db, "users", localStorage.getItem("email")), {
+      uid: localStorage.getItem("uid"),
+      phone: phone,
+      location: location,
+      name: name,
+      status: "verified",
+    })
+      .then(() => {
+        toast.success("Changed Successfully");
+        localStorage.setItem("phone", phone);
+        localStorage.setItem("location", location);
+        localStorage.setItem("name", name);
+        localStorage.setItem("status", "verified");
+        navigate("/profile");
+      })
+      .catch((e) => {
+        console.error(e);
+        toast.error("Try Again!");
+      });
   };
 
   return (
@@ -33,7 +52,7 @@ export default function ProfileEdit() {
                 type="text"
                 placeholder="Name here"
                 className="text-base font-bold text-gray-800 border border-gray-300 rounded-md px-3 py-2 mb-2 w-full"
-                value={localStorage.getItem("name")}
+                value={name}
                 onChange={(e) => setName(e.target.value)}
               />
               <p className=" text-xs text-gray-500 mb-1">{`@${name}`}</p>
@@ -43,7 +62,7 @@ export default function ProfileEdit() {
                   type="text"
                   placeholder="Location"
                   className="text-sm bg-gray-100 px-3 py-2 rounded-md flex-1 border border-gray-300"
-                  value={localStorage.getItem("location")}
+                  value={location}
                   onChange={(e) => setLocation(e.target.value)}
                 />
               </div>
@@ -57,7 +76,7 @@ export default function ProfileEdit() {
               type="text"
               placeholder="Phone"
               className="text-sm bg-gray-100 px-3 py-2 rounded-md flex-1 border border-gray-300"
-              value={localStorage.getItem("phone")}
+              value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>

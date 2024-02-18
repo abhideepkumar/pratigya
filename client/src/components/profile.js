@@ -7,8 +7,10 @@ import {
   faPen,
 } from "@fortawesome/free-solid-svg-icons";
 import toast from "react-hot-toast";
+import {useNavigate} from "react-router-dom"
 
 export default function Profile() {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="max-w-sm w-full p-4 bg-white shadow-md rounded-lg">
@@ -112,7 +114,7 @@ export default function Profile() {
         </div>
 
         <div className="flex justify-center mt-4">
-          <button className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600">
+          <button onClick={()=>{localStorage.clear();navigate("/login")}} className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600">
             Logout
           </button>
         </div>

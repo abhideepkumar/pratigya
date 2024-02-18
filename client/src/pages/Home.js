@@ -5,7 +5,10 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    if (!localStorage.getItem("uid")) return navigate("/login");
+    if (!localStorage.getItem("uid")) {
+      localStorage.clear();
+     return navigate("/login");
+    }
     if (localStorage.getItem("status") !== "verified") return navigate("/profile-edit");
   });
   const onMdibellIconClick = useCallback(() => {
