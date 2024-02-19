@@ -1,19 +1,27 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShare, faEllipsis, faUpLong, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import posts from "../data/posts.json";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { getFirestore, addDoc, getDocs, collection } from "firebase/firestore";
 const Post = () => {
   const [post, setPost] = useState({ caption: "", post: "" });
-
-  const navigate = useNavigate();
+  const [allposts, setAllposts] = useState([]);
+  const db = getFirestore();
+  useEffect(() => {
+    const usersPosts = async () => {
+      const querySnapshot = await getDocs(collection(db, "posts"));
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        setAllposts((prev) => [...prev, doc.data()]);
+      });
+    };
+    usersPosts();
+  }, [db]);
 
   const Post = async () => {
-    if (post.caption === "" || post.post === "") return toast.error("Inputs can't be empty");
-    const db = getFirestore();
-    const postRef = await setDoc(doc(db, "posts", "allposts"), {
+    if (post.caption === "" || post.post === "") return toast.error(`Inputs can't be empty`);
+    const postsRef = collection(db, "posts");
+    const postRef = await addDoc(postsRef, {
       author: localStorage.getItem("name"),
       incident: post.caption,
       description: post.post,
@@ -21,15 +29,11 @@ const Post = () => {
       upvotes: Math.floor(Math.random() * 20) + 1,
       time: Math.floor(Math.random() * 10) + 1,
       emojis: Math.floor(Math.random() * 50) + 1,
-    })
-      .then(() => {
-        toast.success("Post uploaded");
-        navigate("/community");
-      })
-      .catch((e) => {
-        console.error(e);
-        toast.error("Error posting it");
-      });
+    }).then(() => {
+      toast.success("Post uploaded");
+      setAllposts((prev) => [...prev, post]);
+      setPost({ caption: "", post: "" });
+    });
   };
   return (
     <main>
@@ -40,6 +44,7 @@ const Post = () => {
           </a>
           <span className="px-5">Community</span>
         </p>
+        {/* User Post input UI */}
         <div className=" p-6 m-4 bg-blue-100 rounded-lg">
           <div className="flex items-center mb-4">
             <img src="/img/square.jpg" alt="user" className="w-12 h-12 rounded-full mr-4" />
@@ -73,7 +78,8 @@ const Post = () => {
             Post
           </button>
         </div>
-        {posts.map((post, index) => (
+        {/* Post UI */}
+        {allposts.map((post, index) => (
           <div className="p-6" key={index}>
             <div className="flex justify-between items-center">
               <div className="flex items-center mb-4">
