@@ -11,6 +11,10 @@ import {useNavigate} from "react-router-dom"
 
 export default function Profile() {
   const navigate = useNavigate();
+  if (!localStorage.getItem("uid")) {
+    localStorage.clear();
+   return navigate("/login");
+  }
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="max-w-sm w-full p-4 bg-white shadow-md rounded-lg">

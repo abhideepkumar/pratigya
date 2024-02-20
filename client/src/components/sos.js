@@ -56,13 +56,13 @@ const Sos = () => {
   }, [showSOS, secondsRemaining]);
 
   return (
-    <main className="fixed inset-0 z-10 text-white">
+    <main className="text-white">
       {/* SOS trigger */}
       <button
         onClick={() => {
           setShowSOS(true);
         }}
-        className="fixed right-4 bottom-4 w-16 h-16 bg-red-500 hover:bg-red-600 rounded-full p-4 m-2 shadow-md shadow-red-500/50"
+        className="fixed z-10 right-4 bottom-4 w-16 h-16 bg-red-500 hover:bg-red-600 rounded-full p-4 m-2 shadow-md shadow-red-500/50"
       >
         <p className="font-semibold">SOS</p>
       </button>

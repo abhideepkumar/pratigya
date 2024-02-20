@@ -11,6 +11,11 @@ export default function ProfileEdit() {
 
   const navigate = useNavigate();
 
+  if (!localStorage.getItem("uid")) {
+    localStorage.clear();
+    return navigate("/login");
+  }
+
   const handleSave = async () => {
     const db = getFirestore();
     const docRef = await setDoc(doc(db, "users", localStorage.getItem("email")), {
