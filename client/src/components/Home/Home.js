@@ -9,7 +9,6 @@ const Home = () => {
       localStorage.clear();
      return navigate("/login");
     }
-    if (localStorage.getItem("status") !== "verified") return navigate("/profile-edit");
   });
   const onMdibellIconClick = useCallback(() => {
     // Please sync "Notifications" to the project

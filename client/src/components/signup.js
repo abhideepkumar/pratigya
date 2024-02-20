@@ -1,63 +1,32 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import toast from "react-hot-toast";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getDoc, doc, getFirestore } from "firebase/firestore";
 
-export default function Login() {
-  const db = getFirestore();
+const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const auth = getAuth();
   const navigate = useNavigate();
-  useEffect(() => {
-    if (localStorage.getItem("uid")) navigate("/");
-  });
 
-  const LoginButton = async () => {
-    toast.error("This method is not supported");
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const auth = getAuth();
+  const onSignUp = async (event) => {
+    event.preventDefault(); 
     if (!email || !password) {
       toast.error("Please enter email and password");
       return;
     }
-    setLoading(true);
-    try {
-      const User = await signInWithEmailAndPassword(auth, email, password).then((creds) => {
-        setLoading(false);
-        toast.success("Successfully Logged in!");
-        localStorage.setItem("uid", creds.user.uid);
-        localStorage.setItem("email", creds.user.email);
-        checkUser();
-        navigate("/");
-      });
-    } catch (err) {
-      setLoading(false);
-      console.log(err);
-      err.code === "auth/invalid-credential"
-        ? toast.error("Email or Password is incorrect")
-        : toast.error("Something is wrong.");
-    }
-  };
 
-  const checkUser = async () => {
-    await getDoc(doc(db, "users", localStorage.getItem("email"))).then((docSnap) => {
-      if (docSnap.exists()) {
-        localStorage.setItem("status", "verified");
-        localStorage.setItem("phone", docSnap.data().phone);
-        localStorage.setItem("location", docSnap.data().location);
-        localStorage.setItem("name", docSnap.data().name);
-        navigate("/");
-      } else {
-        navigate("/profile-edit");
-      }
-    });
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      toast.success("Successfully Signed Up");
+      toast.success("Redirecting to Login");
+      navigate('/login'); 
+    } catch (error) {
+      const errorMessage = error.message;
+      toast.error(errorMessage);
+    }
   };
 
   return (
@@ -68,30 +37,26 @@ export default function Login() {
         </div>
         <div className="text-center">
           <p className="text-lg font-bold text-indigo-700">Welcome!</p>
-          <p className="text-sm font-bold text-indigo-700">Login Page</p>
-          <p className="text-xs p-2">
-            New here?
-            <a href="/signup" className="mx-1 text-indigo-500 font-bold"> Sign up</a>
-          </p>
+          <p className="text-sm font-bold text-indigo-700">Create your account here</p>
         </div>
         <div className="mt-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-gray-700">Type Username and Password</p>
+            <p className="text-sm font-medium text-gray-700">Type Email and Password</p>
           </div>
-          <form className="mt-2" onSubmit={onSubmit}>
+          <form className="mt-2" onSubmit={onSignUp}>
             <div className="flex flex-col">
-              <label htmlFor="username" className="sr-only">
-                Username
+              <label htmlFor="email" className="sr-only">
+                Email
               </label>
               <input
-                type="text"
-                id="username"
-                name="username"
+                type="email"
+                id="email"
+                name="email"
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
                 value={email}
-                placeholder="Username"
+                placeholder="Email"
                 className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
@@ -116,24 +81,28 @@ export default function Login() {
                 type="submit"
                 className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
               >
-                Login
+                Create Account
               </button>
             </div>
           </form>
         </div>
         <div className="mt-4">
-          <p className="text-sm text-gray-500 text-center">or login with</p>
+          <p className="text-sm text-gray-500 text-center">or create an account with</p>
           <div className="flex justify-center mt-2 space-x-4">
             <button
               className="bg-gray-100 rounded-full p-2 hover:bg-gray-200 text-sm flex items-center "
-              onClick={LoginButton}
+              onClick={() => {
+                toast.error("Currently not available");
+              }}
             >
               <FontAwesomeIcon icon={faGoogle} className="h-4 w-4 text-gray-700 mr-1" />
               Google
             </button>
             <button
               className="bg-gray-100 rounded-full p-2 hover:bg-gray-200 text-sm flex items-center "
-              onClick={LoginButton}
+              onClick={() => {
+                toast.error("Currently not available");
+              }}
             >
               <FontAwesomeIcon icon={faLinkedin} className="h-4 w-4 text-blue-700 mr-1" />
               Linkedin
@@ -143,4 +112,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default Signup;

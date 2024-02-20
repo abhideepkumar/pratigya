@@ -12,6 +12,7 @@ import Profile from "./components/profile";
 import Community from "./components/community";
 import './App.css'; 
 import ProfileEditCreate from "./components/profile-edit";
+import Signup from "./components/signup";
 
 function App() {
   const action = useNavigationType();
@@ -54,6 +55,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Login" element={<Login/>}/>
+      <Route path="/signup" element={<Signup/>}/>
       <Route path="/Profile" element={<Profile/>}/>
       <Route path="/profile-edit" element={<ProfileEditCreate/>}/>
       <Route path="/Community" element={<Community/>}/>
