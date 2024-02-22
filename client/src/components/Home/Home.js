@@ -487,33 +487,6 @@ const Home = () => {
           </div>
         </section>
       </main>
-      <div className="about-us-group-parent">
-        <div className="about-us-group1" />
-        <div className="streamline-group">
-          <img className="streamline-group-child" loading="eager" alt="" src="/group-7.svg" />
-          <img
-            className="fluentlist-16-filled-icon"
-            loading="eager"
-            alt=""
-            src="/fluentlist16filled.svg"
-            onClick={onFluentlist16FilledIconClick}
-          />
-          <img
-            className="bipeople-fill-icon"
-            loading="eager"
-            alt=""
-            src="/bipeoplefill.svg"
-            onClick={onBipeopleFillIconClick}
-          />
-          <img
-            className="streamlinetravel-map-location-icon"
-            loading="eager"
-            alt=""
-            src="/streamlinetravelmaplocationcompass1arrowcompasslocationgpsmapmapspoint.svg"
-            onClick={onStreamlinetravelMapLocationIconClick}
-          />
-        </div>
-      </div>
     </div>
   );
 };

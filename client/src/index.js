@@ -7,6 +7,7 @@ import "./global.css";
 import toast, { Toaster } from 'react-hot-toast';
 import "./config/firebase-config"
 import Sos from "./components/sos";
+import Navbar from "./components/navbar";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -14,6 +15,7 @@ const root = createRoot(container);
 root.render(
   <BrowserRouter>
   <Toaster />
+  <Navbar/>
   <Sos/>
     <App />
   </BrowserRouter>
