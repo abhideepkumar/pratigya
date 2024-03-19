@@ -1,39 +1,28 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-
   return (
-    <main className=' '>
-    <div className="about-us-group-parent fixed bottom-0 left-1/4 right-3/4 z-10">/
-    <div className="about-us-group1" />
-    <div className="streamline-group justify-content-center">
-      <img
-        className="fluentlist-16-filled-icon"
-        loading="eager"
-        alt=""
-        src="/group-7.svg"
-        onClick={()=>{navigate("/")}}
-      />
-      <img
-        className="bipeople-fill-icon"
-        loading="eager"
-        alt=""
-        src="/bipeoplefill.svg"
-        onClick={()=>{navigate("/community")}}
-      />
-      <img
-        className="streamlinetravel-map-location-icon"
-        loading="eager"
-        alt=""
-        src="/streamlinetravelmaplocationcompass1arrowcompasslocationgpsmapmapspoint.svg"
-        onClick={()=>{navigate("/profile")}}
-      />
+    <div className="fixed bottom-3 left-0 right-0 z-50">
+      <div className="flex justify-center">
+        <div className="w-full z-50 flex justify-center items-center bg-blue-400 py-5 px-10 max-w-max rounded-lg">
+          <NavLink to="/" className="mx-6 px-2" >
+            <img loading="eager" alt="" src="./img/home.svg" />
+          </NavLink>
+          <NavLink to="/community" className="mx-6 px-2" >
+            <img loading="eager" alt="" src="./img/community.svg" />
+          </NavLink>
+          <NavLink to="/profile" className="mx-6 px-2" >
+            <img
+              loading="eager"
+              alt=""
+              src="./img/people.svg"
+            />
+          </NavLink>
+        </div>
+      </div>
     </div>
-  </div>
-  </main>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

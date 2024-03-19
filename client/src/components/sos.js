@@ -89,13 +89,13 @@ const Sos = () => {
     <main className="text-white">
       <button
         onClick={handleSOS}
-        className="fixed z-10 right-4 bottom-4 w-16 h-16 bg-red-500 hover:bg-red-600 rounded-full p-4 m-2 shadow-md shadow-red-500/50"
+        className="fixed z-50 right-4 bottom-4 w-16 h-16 bg-red-500 hover:bg-red-600 rounded-full p-4 m-2 shadow-md shadow-red-500/50"
       >
         <p className="font-semibold">SOS</p>
       </button>
 
       {showSOS && (
-        <div className="absolute h-full w-full backdrop-filter backdrop-blur backdrop-brightness-50">
+        <div className="absolute h-full w-full backdrop-filter backdrop-blur backdrop-brightness-50 z-50">
           <div className="flex justify-center items-center h-full w-full flex-col">
             <div className="w-32 h-32 bg-red-500 hover:bg-red-600 rounded-full p-4 m-2 flex justify-center items-center">
               <p className="font-semibold text-5xl">SOS</p>

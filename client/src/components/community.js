@@ -40,7 +40,7 @@ const Post = () => {
   };
 
   return (
-    <main>
+    <main className="bg-gray-100">
       <div className="max-w-xl mx-auto px-4 md:px-0">
         <p className="pt-5 text-2xl">
           <a href="/">
