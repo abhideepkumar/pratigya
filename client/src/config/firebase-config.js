@@ -1,14 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-
+import env from "react-dotenv";
 const firebaseConfig = {
-  apiKey: "AIzaSyApwtpE4AQI66hkXsZ95lDX2Fi7TrCoj6Y",
-  authDomain: "pratigya-nie.firebaseapp.com",
-  projectId: "pratigya-nie",
-  storageBucket: "pratigya-nie.appspot.com",
-  messagingSenderId: "741505478600",
-  appId: "1:741505478600:web:535e96a3cffb81a6ca5afd",
-  measurementId: "G-SN0ED893X6",
+  apiKey: env.FIREBASE_apiKey,
+  authDomain: env.FIREBASE_authDomain,
+  projectId: env.FIREBASE_projectId,
+  storageBucket: env.FIREBASE_storageBucket,
+  messagingSenderId: env.FIREBASE_messagingSenderId,
+  appId: env.FIREBASE_appId,
+  measurementId: env.FIREBASE_measurementId,
 };
 
 // Initialize Firebase
